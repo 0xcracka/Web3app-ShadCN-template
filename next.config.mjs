@@ -5,6 +5,10 @@ const nextConfig = {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
   },
+  env: {
+    NEXT_PUBLIC_TEMPLATE_CLIENT_ID:
+      process.env.NEXT_PUBLIC_TEMPLATE_CLIENT_ID || "placeholder_client_id",
+  },
 };
 
 export default nextConfig;

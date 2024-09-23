@@ -1,24 +1,47 @@
-import Image from "next/image";
 import { ConnectButton } from "thirdweb/react";
-import thirdwebIcon from "@public/thirdweb.svg";
 import { client } from "./client";
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/ui/darkMode";
 
 export default function Home() {
   return (
-    <main className="p-4 pb-10 min-h-[100vh] flex items-center justify-center container max-w-screen-lg mx-auto">
-      <div className="py-20">
-        <div className="flex justify-center mb-20">
-          <ConnectButton
-            client={client}
-            appMetadata={{
-              name: "Example App",
-              url: "https://example.com",
-            }}
-          />
+    <main className="min-h-screen bg-background text-foreground">
+      <div className="container max-w-screen-xl mx-auto px-4 py-8">
+        <header className="flex justify-between items-center mb-12">
+          <h1 className="text-3xl font-bold">Example App</h1>
+          <div className="flex items-center space-x-4">
+            <ModeToggle />
+            <ConnectButton
+              client={client}
+              appMetadata={{
+                name: "Example App",
+                url: "https://example.com",
+              }}
+            />
+          </div>
+        </header>
 
-          <Button>Click me</Button>
-        </div>
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ArticleCard
+            title="Getting Started"
+            href="#"
+            description="Learn how to use our platform effectively."
+          />
+          <ArticleCard
+            title="Advanced Features"
+            href="#"
+            description="Explore powerful tools and capabilities."
+          />
+          <ArticleCard
+            title="API Documentation"
+            href="#"
+            description="Integrate our services into your applications."
+          />
+        </section>
+
+        <footer className="mt-16 text-center">
+          <Button>Get Started</Button>
+        </footer>
       </div>
     </main>
   );
